@@ -5,7 +5,7 @@
         // Create a new XMLHttpRequest object
         var req = new XMLHttpRequest();
         req.onload = reqListener; // Define what to do when the response is received
-        req.open('POST', 'https://quitplan.ycq2.org/api/register', true); // Open a POST request to the target URL
+        req.open('POST', 'https://quitplan.ycq2.org/api/cravings/126?_method=PUT', true); // Open a POST request to the target URL
         req.withCredentials = true; // Include credentials like cookies in the request
 
         // Set the appropriate Content-Type header for a POST request
